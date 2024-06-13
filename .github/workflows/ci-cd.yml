@@ -38,8 +38,9 @@ jobs:
         docker push ${{ secrets.DOCKER_USERNAME }}/my-python-app:latest
 
   run-python-script:
-    if: github.event_name == 'workflow_dispatch'  # Only run if manually triggered
+    if: ${{ github.event_name == 'workflow_dispatch' }}  # Only run if manually triggered
     runs-on: ubuntu-latest
+    needs: build  # Ensure this job runs after the build job
 
     steps:
     - name: Checkout repository
