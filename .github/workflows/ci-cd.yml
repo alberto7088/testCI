@@ -43,6 +43,9 @@ jobs:
     needs: build  # Ensure this job runs after the build job
 
     steps:
+    - name: Debug - Print event name
+      run: echo "Event name ${{ github.event_name }}"
+
     - name: Checkout repository
       uses: actions/checkout@v2
 
